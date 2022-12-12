@@ -45,8 +45,8 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.GenChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.TypeChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -64,8 +64,8 @@
             this.TypeChartButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GenChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TypeChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatsChart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,8 +145,8 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.chart3);
-            this.panel2.Controls.Add(this.chart2);
+            this.panel2.Controls.Add(this.GenChart);
+            this.panel2.Controls.Add(this.TypeChart);
             this.panel2.Location = new System.Drawing.Point(0, 5);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(836, 553);
@@ -155,38 +155,38 @@
             // chart3
             // 
             chartArea4.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea4);
+            this.GenChart.ChartAreas.Add(chartArea4);
             legend4.Alignment = System.Drawing.StringAlignment.Center;
             legend4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
             legend4.Name = "Legend1";
-            this.chart3.Legends.Add(legend4);
-            this.chart3.Location = new System.Drawing.Point(7, 0);
-            this.chart3.Name = "chart3";
+            this.GenChart.Legends.Add(legend4);
+            this.GenChart.Location = new System.Drawing.Point(7, 0);
+            this.GenChart.Name = "chart3";
             series4.ChartArea = "ChartArea1";
             series4.Legend = "Legend1";
             series4.Name = "Series1";
-            this.chart3.Series.Add(series4);
-            this.chart3.Size = new System.Drawing.Size(406, 546);
-            this.chart3.TabIndex = 1;
-            this.chart3.Text = "chart3";
+            this.GenChart.Series.Add(series4);
+            this.GenChart.Size = new System.Drawing.Size(406, 546);
+            this.GenChart.TabIndex = 1;
+            this.GenChart.Text = "chart3";
             // 
             // chart2
             // 
             chartArea5.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea5);
+            this.TypeChart.ChartAreas.Add(chartArea5);
             legend5.Alignment = System.Drawing.StringAlignment.Center;
             legend5.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
             legend5.Name = "Legend1";
-            this.chart2.Legends.Add(legend5);
-            this.chart2.Location = new System.Drawing.Point(419, -1);
-            this.chart2.Name = "chart2";
+            this.TypeChart.Legends.Add(legend5);
+            this.TypeChart.Location = new System.Drawing.Point(419, -1);
+            this.TypeChart.Name = "chart2";
             series5.ChartArea = "ChartArea1";
             series5.Legend = "Legend1";
             series5.Name = "Series1";
-            this.chart2.Series.Add(series5);
-            this.chart2.Size = new System.Drawing.Size(407, 546);
-            this.chart2.TabIndex = 0;
-            this.chart2.Text = "chart2";
+            this.TypeChart.Series.Add(series5);
+            this.TypeChart.Size = new System.Drawing.Size(407, 546);
+            this.TypeChart.TabIndex = 0;
+            this.TypeChart.Text = "chart2";
             // 
             // label12
             // 
@@ -349,8 +349,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GenChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TypeChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatsChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -381,8 +381,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button TypeChartButton;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart GenChart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart TypeChart;
     }
 }
 

@@ -119,15 +119,11 @@ namespace PokemonVisualization
             StatsChart.BackColor = Color.Transparent;
 
             var Area1 = StatsChart.ChartAreas.Add("Area1");
-            Area1.AxisX.Title = "Stat";
-            Area1.AxisY.Title = "Value";
-            Area1.AxisX.TitleAlignment = StringAlignment.Center;
-            Area1.AxisY.TitleAlignment = StringAlignment.Center;
-
+            Area1.AxisY.Maximum = 255;
             Area1.AxisX.Interval = 1;
 
             var chartSeries = StatsChart.Series.Add("Series1");
-            chartSeries.ChartType = SeriesChartType.Column;
+            chartSeries.ChartType = SeriesChartType.Radar;
             chartSeries.IsValueShownAsLabel = true;
             chartSeries.LabelBackColor = ColorTranslator.FromHtml(GetHexCode(currentResults[listBox1.SelectedIndex].Type_1));
             chartSeries.Palette = ChartColorPalette.Grayscale;
@@ -138,9 +134,10 @@ namespace PokemonVisualization
             chartSeries.Points.AddXY("HP", currentResults[listBox1.SelectedIndex].HP);
             chartSeries.Points.AddXY("Attack", currentResults[listBox1.SelectedIndex].Attack);
             chartSeries.Points.AddXY("Defense", currentResults[listBox1.SelectedIndex].Defense);
-            chartSeries.Points.AddXY("Sp.Atk", currentResults[listBox1.SelectedIndex].Sp_Atk);
-            chartSeries.Points.AddXY("Sp.Def", currentResults[listBox1.SelectedIndex].Sp_Def);
             chartSeries.Points.AddXY("Speed", currentResults[listBox1.SelectedIndex].Speed);
+            chartSeries.Points.AddXY("Sp.Def", currentResults[listBox1.SelectedIndex].Sp_Def);
+            chartSeries.Points.AddXY("Sp.Atk", currentResults[listBox1.SelectedIndex].Sp_Atk);
+
         }
         
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -188,43 +185,42 @@ namespace PokemonVisualization
 
         private void HandleTypeChart()
         {
-            chart2.Series.Clear();
-            chart2.ChartAreas.Clear();
-            chart2.Titles.Clear();
+            TypeChart.Series.Clear();
+            TypeChart.ChartAreas.Clear();
+            TypeChart.Titles.Clear();
 
-            chart2.Titles.Add("Average BST By Type");
+            TypeChart.Titles.Add("Average BST By Type");
 
-            var Area1 = chart2.ChartAreas.Add("Area1");
-            Area1.AxisX.Title = "Type";
-            Area1.AxisY.Title = "Average BST";
-            Area1.AxisX.TitleAlignment = StringAlignment.Center;
-            Area1.AxisY.TitleAlignment = StringAlignment.Center;
+            var Area1 = TypeChart.ChartAreas.Add("Area1");
+            Area1.AxisX.Interval = 1;
 
 
-            var chartSeries = chart2.Series.Add("Average BST By Type");
-            chartSeries.ChartType = SeriesChartType.Pie;
+            var chartSeries = TypeChart.Series.Add("Average BST By Type");
+            chartSeries.ChartType = SeriesChartType.Bar;
             chartSeries.IsValueShownAsLabel = true;
-            chartSeries.IsVisibleInLegend = true;
-
+            chartSeries.IsVisibleInLegend = false;
+            chartSeries.LabelBackColor = Color.AntiqueWhite;
 
             List<DataModel> results = services.GetChartRequest("get-type-chart").Result;
+            var ordered = results.OrderBy(x => x.Y).ToList();
 
-            for (int i = 0; i < results.Count; i++)
+
+            for (int i = 0; i < ordered.Count; i++)
             {
-                chartSeries.Points.AddXY(results[i].X, results[i].Y);
-                chartSeries.Points[i].Color = ColorTranslator.FromHtml(GetHexCode(results[i].X));
+                chartSeries.Points.AddXY(ordered[i].X, ordered[i].Y);
+                chartSeries.Points[i].Color = ColorTranslator.FromHtml(GetHexCode(ordered[i].X));
             }
         }
 
         private void HandleGenChart()
         {
-            chart3.Series.Clear();
-            chart3.ChartAreas.Clear();
-            chart3.Titles.Clear();
+            GenChart.Series.Clear();
+            GenChart.ChartAreas.Clear();
+            GenChart.Titles.Clear();
 
-            chart3.Titles.Add("Pokemon Introduced By Region");
+            GenChart.Titles.Add("Pokemon Introduced By Region");
 
-            var Area1 = chart3.ChartAreas.Add("Area1");
+            var Area1 = GenChart.ChartAreas.Add("Area1");
             Area1.AxisX.Title = "Region";
             Area1.AxisY.Title = "Pokemon Introduced";
             Area1.AxisX.TitleAlignment = StringAlignment.Center;
@@ -233,7 +229,7 @@ namespace PokemonVisualization
             Area1.AxisY.Maximum = 500;
 
 
-            var chartSeries = chart3.Series.Add("Pokemon Introduced By Region");
+            var chartSeries = GenChart.Series.Add("Pokemon Introduced By Region");
             chartSeries.ChartType = SeriesChartType.Funnel;
             chartSeries.IsValueShownAsLabel = true;
             chartSeries.IsVisibleInLegend = true;

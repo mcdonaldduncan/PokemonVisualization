@@ -1,4 +1,4 @@
-Processed at: 12/12/2022 12:03:59 PM
+Processed at: 12/12/2022 1:07:11 PM
 
 Request: GetTypes
 Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-types', Version: 1.1, Content: <null>, Headers:
@@ -6,7 +6,7 @@ Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-types', Ver
   Accept: application/json
 }
 Code: OK
-Time: 12/12/2022 12:03:52 PM
+Time: 12/12/2022 1:05:34 PM
 
 Request: GetGenerations
 Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-regions', Version: 1.1, Content: <null>, Headers:
@@ -14,15 +14,15 @@ Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-regions', V
   Accept: application/json
 }
 Code: OK
-Time: 12/12/2022 12:03:52 PM
+Time: 12/12/2022 1:05:34 PM
 
 Request: GetFilteredPokemon
-Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/null/0', Version: 1.1, Content: <null>, Headers:
+Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/Grass/1', Version: 1.1, Content: <null>, Headers:
 {
   Accept: application/json
 }
 Code: OK
-Time: 12/12/2022 12:03:54 PM
+Time: 12/12/2022 1:05:39 PM
 
 Request: get-type-chart
 Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-type-chart', Version: 1.1, Content: <null>, Headers:
@@ -30,7 +30,7 @@ Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-type-chart'
   Accept: application/json
 }
 Code: OK
-Time: 12/12/2022 12:03:56 PM
+Time: 12/12/2022 1:06:02 PM
 
 Request: get-generation-chart
 Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-generation-chart', Version: 1.1, Content: <null>, Headers:
@@ -38,5 +38,5 @@ Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-generation-
   Accept: application/json
 }
 Code: OK
-Time: 12/12/2022 12:03:56 PM
+Time: 12/12/2022 1:06:02 PM
 
