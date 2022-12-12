@@ -37,12 +37,12 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.TypeDropdown = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.GenDropdown = new System.Windows.Forms.ComboBox();
             this.GetResults = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.PokemonList = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.GenChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -71,11 +71,11 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(83, 7);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 1;
+            this.TypeDropdown.FormattingEnabled = true;
+            this.TypeDropdown.Location = new System.Drawing.Point(83, 7);
+            this.TypeDropdown.Name = "comboBox1";
+            this.TypeDropdown.Size = new System.Drawing.Size(121, 21);
+            this.TypeDropdown.TabIndex = 1;
             // 
             // label1
             // 
@@ -97,11 +97,11 @@
             // 
             // comboBox2
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(83, 36);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 3;
+            this.GenDropdown.FormattingEnabled = true;
+            this.GenDropdown.Location = new System.Drawing.Point(83, 36);
+            this.GenDropdown.Name = "comboBox2";
+            this.GenDropdown.Size = new System.Drawing.Size(121, 21);
+            this.GenDropdown.TabIndex = 3;
             // 
             // GetResults
             // 
@@ -115,12 +115,12 @@
             // 
             // listBox1
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(15, 96);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(189, 433);
-            this.listBox1.TabIndex = 6;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.PokemonList.FormattingEnabled = true;
+            this.PokemonList.Location = new System.Drawing.Point(15, 96);
+            this.PokemonList.Name = "listBox1";
+            this.PokemonList.Size = new System.Drawing.Size(189, 433);
+            this.PokemonList.TabIndex = 6;
+            this.PokemonList.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // panel1
             // 
@@ -338,12 +338,12 @@
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.PokemonList);
             this.Controls.Add(this.GetResults);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.GenDropdown);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.TypeDropdown);
             this.Name = "PokemonVis";
             this.Text = "Pokemon Sidecar";
             this.panel1.ResumeLayout(false);
@@ -358,12 +358,12 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox TypeDropdown;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox GenDropdown;
         private System.Windows.Forms.Button GetResults;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox PokemonList;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;

@@ -1,4 +1,4 @@
-Processed at: 12/12/2022 1:07:11 PM
+Processed at: 12/12/2022 2:39:34 PM
 
 Request: GetTypes
 Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-types', Version: 1.1, Content: <null>, Headers:
@@ -6,7 +6,7 @@ Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-types', Ver
   Accept: application/json
 }
 Code: OK
-Time: 12/12/2022 1:05:34 PM
+Time: 12/12/2022 2:38:44 PM
 
 Request: GetGenerations
 Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-regions', Version: 1.1, Content: <null>, Headers:
@@ -14,7 +14,7 @@ Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-regions', V
   Accept: application/json
 }
 Code: OK
-Time: 12/12/2022 1:05:34 PM
+Time: 12/12/2022 2:38:44 PM
 
 Request: GetFilteredPokemon
 Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/Grass/1', Version: 1.1, Content: <null>, Headers:
@@ -22,7 +22,7 @@ Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/Gr
   Accept: application/json
 }
 Code: OK
-Time: 12/12/2022 1:05:39 PM
+Time: 12/12/2022 2:38:48 PM
 
 Request: get-type-chart
 Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-type-chart', Version: 1.1, Content: <null>, Headers:
@@ -30,7 +30,7 @@ Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-type-chart'
   Accept: application/json
 }
 Code: OK
-Time: 12/12/2022 1:06:02 PM
+Time: 12/12/2022 2:38:55 PM
 
 Request: get-generation-chart
 Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-generation-chart', Version: 1.1, Content: <null>, Headers:
@@ -38,5 +38,13 @@ Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-generation-
   Accept: application/json
 }
 Code: OK
-Time: 12/12/2022 1:06:02 PM
+Time: 12/12/2022 2:38:55 PM
+
+Request: GetFilteredPokemon
+Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/Grass/1', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+Code: OK
+Time: 12/12/2022 2:39:32 PM
 

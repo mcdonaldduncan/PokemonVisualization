@@ -17,7 +17,13 @@ namespace PokemonVisualization
         public List<Error> Errors = new List<Error>();
         
         List<Log> Logs = new List<Log>();
-        
+
+        /// <summary>
+        /// Get a chart specified by stored proc passed as parameter, model is always datamodel
+        /// Open reader - execute stored proc - map values to model - return list of model
+        /// </summary>
+        /// <param name="requestName"></param>
+        /// <returns></returns>
         public async Task<List<DataModel>> GetChartRequest(string requestName)
         {
             List<DataModel> dataModels = new List<DataModel>();
@@ -43,7 +49,14 @@ namespace PokemonVisualization
 
             return dataModels;
         }
-        
+
+        /// <summary>
+        /// Get Pokemon filtered by type and gen number, pass empty string and 0 for null values to return results filtered by both, either, or none
+        /// Open reader - execute stored proc - map values to model - return list of model
+        /// </summary>
+        /// <param name="Type"></param>
+        /// <param name="GenNum"></param>
+        /// <returns></returns>
         public async Task<List<Pokemon>> GetFilteredPokemon(string Type, int GenNum)
         {
             List<Pokemon> pokemon = new List<Pokemon>();
@@ -70,6 +83,10 @@ namespace PokemonVisualization
             return pokemon;
         }
 
+        /// <summary>
+        /// Get all pokemon generations, their number and name - used for filtering
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Generation>> GetGenerations()
         {
             List<Generation> generations = new List<Generation>();
@@ -95,7 +112,11 @@ namespace PokemonVisualization
 
             return generations;
         }
-    
+
+        /// <summary>
+        /// Get all pokemon types and their hex color, used for filtering and assigning colors
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Type>> GetTypes()
         {
             List<Type> types = new List<Type>();
@@ -123,6 +144,9 @@ namespace PokemonVisualization
         }
     
         
+        /// <summary>
+        /// Write all logs to logs.txt
+        /// </summary>
         public void GenerateLogFile()
         {
             string writePath = Path.Combine(directoryPath, "logs.txt");
@@ -151,6 +175,9 @@ namespace PokemonVisualization
             }
         }
 
+        /// <summary>
+        /// Write all errors to errors.txt
+        /// </summary>
         public void ReportErrors()
         {
             string writePath = Path.Combine(directoryPath, "errors.txt");
@@ -179,6 +206,9 @@ namespace PokemonVisualization
             }
         }
 
+        /// <summary>
+        /// Write any final errors to console
+        /// </summary>
         public void ReportFinalErrors()
         {
             foreach (var error in Errors)
@@ -186,7 +216,6 @@ namespace PokemonVisualization
                 Console.WriteLine($"Error: {error.ErrorMessage} Source: {error.Source}");
             }
         }
-
 
     }
 }

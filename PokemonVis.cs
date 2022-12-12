@@ -17,32 +17,40 @@ namespace PokemonVisualization
         List<Pokemon> currentResults = new List<Pokemon>();
         List<Type> types = new List<Type>();
 
+        bool chartsReady = false;
+
         public PokemonVis()
         {
             InitializeComponent();
-            ClearChartOne();
+            ClearStatsChart();
             BindTypes();
             BindGenerations();
             Start();
         }
 
+        /// <summary>
+        /// Logic to ensure components are in correct state on start
+        /// </summary>
         private void Start()
         {
-            comboBox1.Enabled = checkBox1.Checked;
-            comboBox2.Enabled = checkBox2.Checked;
+            TypeDropdown.Enabled = checkBox1.Checked;
+            GenDropdown.Enabled = checkBox2.Checked;
 
             textBox1.ReadOnly = true;
 
             panel2.Visible = false;
         }
 
+        /// <summary>
+        /// Fetch types and set as the datasource for TypeDropdown
+        /// </summary>
         private void BindTypes()
         {
             try
             {
                 types = services.GetTypes().Result;
-                comboBox1.DataSource = types;
-                comboBox1.DisplayMember = "Name";
+                TypeDropdown.DataSource = types;
+                TypeDropdown.DisplayMember = "Name";
             }
             catch (Exception e)
             {
@@ -51,69 +59,89 @@ namespace PokemonVisualization
             }
         }
 
+        /// <summary>
+        /// Fetch generations and set as the datasource for GenDropdown
+        /// </summary>
         private void BindGenerations()
         {
             try
             {
                 var regions = services.GetGenerations().Result;
-                comboBox2.DataSource = regions;
-                comboBox2.DisplayMember = "Region_Name";
-                comboBox2.ValueMember = "Generation_Number";
+                GenDropdown.DataSource = regions;
+                GenDropdown.DisplayMember = "Region_Name";
+                GenDropdown.ValueMember = "Generation_Number";
             }
             catch (Exception e)
             {
-
                 services.Errors.Add(new Error(e.Message, e.Source));
             }
         }
 
+        /// <summary>
+        /// Fetch pokemon filtered off dropdowns, display results in PokemonList
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GetResults_Click(object sender, EventArgs e)
         {
-            string type = checkBox1.Checked ? comboBox1.Text : "null";
-            int genNum = checkBox2.Checked ? (int)comboBox2.SelectedValue : 0; 
+            string type = checkBox1.Checked ? TypeDropdown.Text : "null";
+            int genNum = checkBox2.Checked ? (int)GenDropdown.SelectedValue : 0; 
             try
             {
                 currentResults = services.GetFilteredPokemon(type, genNum).Result;
-                listBox1.DisplayMember = "Name";
-                listBox1.DataSource = currentResults;
+                PokemonList.DisplayMember = "Name";
+                PokemonList.DataSource = currentResults;
                 
             }
             catch (Exception ex)
             {
-
                 services.Errors.Add(new Error(ex.Message, ex.Source));
             }
         }
 
-        void ClearChartOne()
+        /// <summary>
+        /// Clear chart components
+        /// </summary>
+        void ClearStatsChart()
         {
             StatsChart.Series.Clear();
             StatsChart.ChartAreas.Clear();
             StatsChart.Titles.Clear();
         }
 
+        /// <summary>
+        /// Update charts, text and colors on the selection of a new pokemon
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             HandleChartOne();
             HandleText();
 
-            panel1.BackColor = ColorTranslator.FromHtml(GetHexCode(currentResults[listBox1.SelectedIndex].Type_1));
-            textBox1.BackColor = ColorTranslator.FromHtml(GetHexCode(currentResults[listBox1.SelectedIndex].Type_2) ?? GetHexCode(currentResults[listBox1.SelectedIndex].Type_1));
+            panel1.BackColor = ColorTranslator.FromHtml(GetHexCode(currentResults[PokemonList.SelectedIndex].Type_1));
+            textBox1.BackColor = ColorTranslator.FromHtml(GetHexCode(currentResults[PokemonList.SelectedIndex].Type_2) ?? GetHexCode(currentResults[PokemonList.SelectedIndex].Type_1));
         }
 
+        /// <summary>
+        /// Map current pokemon to labels
+        /// </summary>
         private void HandleText()
         {
-            textBox1.Text = currentResults[listBox1.SelectedIndex].Name;
-            label8.Text = currentResults[listBox1.SelectedIndex].Pokedex_Number.ToString();
-            label9.Text = currentResults[listBox1.SelectedIndex].Type_1;
-            label10.Text = currentResults[listBox1.SelectedIndex].Type_2;
-            label11.Text = currentResults[listBox1.SelectedIndex].BaseStatTotal.ToString();
-            label12.Text = currentResults[listBox1.SelectedIndex].Region_Name;
+            textBox1.Text = currentResults[PokemonList.SelectedIndex].Name;
+            label8.Text = currentResults[PokemonList.SelectedIndex].Pokedex_Number.ToString();
+            label9.Text = currentResults[PokemonList.SelectedIndex].Type_1;
+            label10.Text = currentResults[PokemonList.SelectedIndex].Type_2;
+            label11.Text = currentResults[PokemonList.SelectedIndex].BaseStatTotal.ToString();
+            label12.Text = currentResults[PokemonList.SelectedIndex].Region_Name;
         }
 
+        /// <summary>
+        /// Assign correct data for stats chart
+        /// </summary>
         private void HandleChartOne()
         {
-            ClearChartOne();
+            ClearStatsChart();
 
             StatsChart.Titles.Add("Base Stat Totals");
             StatsChart.BackColor = Color.Transparent;
@@ -125,31 +153,46 @@ namespace PokemonVisualization
             var chartSeries = StatsChart.Series.Add("Series1");
             chartSeries.ChartType = SeriesChartType.Radar;
             chartSeries.IsValueShownAsLabel = true;
-            chartSeries.LabelBackColor = ColorTranslator.FromHtml(GetHexCode(currentResults[listBox1.SelectedIndex].Type_1));
+            chartSeries.LabelBackColor = ColorTranslator.FromHtml(GetHexCode(currentResults[PokemonList.SelectedIndex].Type_1));
             chartSeries.Palette = ChartColorPalette.Grayscale;
-            chartSeries.ShadowColor = ColorTranslator.FromHtml(GetHexCode(currentResults[listBox1.SelectedIndex].Type_1));
+            chartSeries.ShadowColor = ColorTranslator.FromHtml(GetHexCode(currentResults[PokemonList.SelectedIndex].Type_1));
             chartSeries.ShadowOffset = 1;
             chartSeries.IsVisibleInLegend = false;
 
-            chartSeries.Points.AddXY("HP", currentResults[listBox1.SelectedIndex].HP);
-            chartSeries.Points.AddXY("Attack", currentResults[listBox1.SelectedIndex].Attack);
-            chartSeries.Points.AddXY("Defense", currentResults[listBox1.SelectedIndex].Defense);
-            chartSeries.Points.AddXY("Speed", currentResults[listBox1.SelectedIndex].Speed);
-            chartSeries.Points.AddXY("Sp.Def", currentResults[listBox1.SelectedIndex].Sp_Def);
-            chartSeries.Points.AddXY("Sp.Atk", currentResults[listBox1.SelectedIndex].Sp_Atk);
+            chartSeries.Points.AddXY("HP", currentResults[PokemonList.SelectedIndex].HP);
+            chartSeries.Points.AddXY("Attack", currentResults[PokemonList.SelectedIndex].Attack);
+            chartSeries.Points.AddXY("Defense", currentResults[PokemonList.SelectedIndex].Defense);
+            chartSeries.Points.AddXY("Speed", currentResults[PokemonList.SelectedIndex].Speed);
+            chartSeries.Points.AddXY("Sp.Def", currentResults[PokemonList.SelectedIndex].Sp_Def);
+            chartSeries.Points.AddXY("Sp.Atk", currentResults[PokemonList.SelectedIndex].Sp_Atk);
 
         }
         
+        /// <summary>
+        /// Enable/Disable type dropdown on check/uncheck
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            comboBox1.Enabled = checkBox1.Checked;
+            TypeDropdown.Enabled = checkBox1.Checked;
         }
 
+        /// <summary>
+        /// Enable/Disable gen dropdown on check/uncheck
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            comboBox2.Enabled = checkBox2.Checked;
+            GenDropdown.Enabled = checkBox2.Checked;
         }
 
+        /// <summary>
+        /// Look up hex code by type from type cache
+        /// </summary>
+        /// <param name="_type"></param>
+        /// <returns></returns>
         private string GetHexCode(string _type)
         {
             foreach (var type in types)
@@ -163,16 +206,22 @@ namespace PokemonVisualization
             return null;
         }
 
+        /// <summary>
+        /// Enable/disable additional charts on button click, assign data if first viewing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TypeChartButton_Click(object sender, EventArgs e)
         {
             panel2.Visible = !panel2.Visible;
 
-            if (panel2.Visible)
+            if (panel2.Visible && !chartsReady)
             {
                 try
                 {
                     HandleTypeChart();
                     HandleGenChart();
+                    chartsReady = true;
                 }
                 catch (Exception ex)
                 {
@@ -183,6 +232,9 @@ namespace PokemonVisualization
 
         }
 
+        /// <summary>
+        /// Assign correct data for type chart
+        /// </summary>
         private void HandleTypeChart()
         {
             TypeChart.Series.Clear();
@@ -212,6 +264,9 @@ namespace PokemonVisualization
             }
         }
 
+        /// <summary>
+        /// Assign correct data for gen chart
+        /// </summary>
         private void HandleGenChart()
         {
             GenChart.Series.Clear();
