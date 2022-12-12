@@ -14,9 +14,9 @@ namespace PokemonVisualization
 {
     internal class Services
     {
-        public List<Error> errors = new List<Error>();
-        List<Log> logs = new List<Log>();
-
+        public List<Error> Errors = new List<Error>();
+        
+        List<Log> Logs = new List<Log>();
         
         public async Task<List<DataModel>> GetChartRequest(string requestName)
         {
@@ -32,18 +32,17 @@ namespace PokemonVisualization
                     HttpResponseMessage response = client.GetAsync(requestName).Result;
                     dataModels = JsonConvert.DeserializeObject<List<DataModel>>(await response.Content.ReadAsStringAsync());
 
-                    logs.Add(new Log(requestName, response.RequestMessage?.ToString(), response.StatusCode.ToString(), DateTime.Now));
+                    Logs.Add(new Log(requestName, response.RequestMessage?.ToString(), response.StatusCode.ToString(), DateTime.Now));
                 }
 
             }
             catch (Exception e)
             {
-                errors.Add(new Error(e.Message, e.Source));
+                Errors.Add(new Error(e.Message, e.Source));
             }
 
             return dataModels;
         }
-
         
         public async Task<List<Pokemon>> GetFilteredPokemon(string Type, int GenNum)
         {
@@ -59,18 +58,17 @@ namespace PokemonVisualization
                     HttpResponseMessage response = client.GetAsync($"get-filtered/{Type}/{GenNum}").Result;
                     pokemon = JsonConvert.DeserializeObject<List<Pokemon>>(await response.Content.ReadAsStringAsync());
 
-                    logs.Add(new Log("GetFilteredPokemon", response.RequestMessage?.ToString(), response.StatusCode.ToString(), DateTime.Now));
+                    Logs.Add(new Log("GetFilteredPokemon", response.RequestMessage?.ToString(), response.StatusCode.ToString(), DateTime.Now));
                 }
 
             }
             catch (Exception e)
             {
-                errors.Add(new Error(e.Message, e.Source));
+                Errors.Add(new Error(e.Message, e.Source));
             }
 
             return pokemon;
         }
-    
 
         public async Task<List<Generation>> GetGenerations()
         {
@@ -86,19 +84,18 @@ namespace PokemonVisualization
                     HttpResponseMessage response = client.GetAsync("get-regions").Result;
                     generations = JsonConvert.DeserializeObject<List<Generation>>(await response.Content.ReadAsStringAsync());
 
-                    logs.Add(new Log("GetGenerations", response.RequestMessage?.ToString(), response.StatusCode.ToString(), DateTime.Now));
+                    Logs.Add(new Log("GetGenerations", response.RequestMessage?.ToString(), response.StatusCode.ToString(), DateTime.Now));
                 }
 
             }
             catch (Exception e)
             {
-                errors.Add(new Error(e.Message, e.Source));
+                Errors.Add(new Error(e.Message, e.Source));
             }
 
             return generations;
         }
     
-        
         public async Task<List<Type>> GetTypes()
         {
             List<Type> types = new List<Type>();
@@ -113,21 +110,18 @@ namespace PokemonVisualization
                     HttpResponseMessage response = client.GetAsync("get-types").Result;
                     types = JsonConvert.DeserializeObject<List<Type>>(await response.Content.ReadAsStringAsync());
 
-                    logs.Add(new Log("GetTypes", response.RequestMessage?.ToString(), response.StatusCode.ToString(), DateTime.Now));
+                    Logs.Add(new Log("GetTypes", response.RequestMessage?.ToString(), response.StatusCode.ToString(), DateTime.Now));
                 }
 
             }
             catch (Exception e)
             {
-                errors.Add(new Error(e.Message, e.Source));
+                Errors.Add(new Error(e.Message, e.Source));
             }
 
             return types;
         }
     
-
-
-
         
         public void GenerateLogFile()
         {
@@ -145,7 +139,7 @@ namespace PokemonVisualization
                     sw.WriteLine($"Processed at: {DateTime.Now}");
                     sw.WriteLine();
 
-                    foreach (var log in logs)
+                    foreach (var log in Logs)
                     {
                         sw.WriteLine(log.ToString());
                     }
@@ -153,7 +147,7 @@ namespace PokemonVisualization
             }
             catch (Exception e)
             {
-                errors.Add(new Error(e.Message, e.Source));
+                Errors.Add(new Error(e.Message, e.Source));
             }
         }
 
@@ -173,7 +167,7 @@ namespace PokemonVisualization
                     sw.WriteLine($"Processed at: {DateTime.Now}");
                     sw.WriteLine();
 
-                    foreach (var error in errors)
+                    foreach (var error in Errors)
                     {
                         sw.WriteLine(error.ToString());
                     }
@@ -181,13 +175,13 @@ namespace PokemonVisualization
             }
             catch (Exception e)
             {
-                errors.Add(new Error(e.Message, e.Source));
+                Errors.Add(new Error(e.Message, e.Source));
             }
         }
 
         public void ReportFinalErrors()
         {
-            foreach (var error in errors)
+            foreach (var error in Errors)
             {
                 Console.WriteLine($"Error: {error.ErrorMessage} Source: {error.Source}");
             }

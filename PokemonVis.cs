@@ -11,20 +11,23 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace PokemonVisualization
 {
-    public partial class Form1 : Form
+    public partial class PokemonVis : Form
     {
         internal Services services = new Services();
         List<Pokemon> currentResults = new List<Pokemon>();
         List<Type> types = new List<Type>();
 
-        public Form1()
+        public PokemonVis()
         {
             InitializeComponent();
             ClearChartOne();
             BindTypes();
             BindGenerations();
+            Start();
+        }
 
-
+        private void Start()
+        {
             comboBox1.Enabled = checkBox1.Checked;
             comboBox2.Enabled = checkBox2.Checked;
 
@@ -44,7 +47,7 @@ namespace PokemonVisualization
             catch (Exception e)
             {
 
-                services.errors.Add(new Error(e.Message, e.Source));
+                services.Errors.Add(new Error(e.Message, e.Source));
             }
         }
 
@@ -60,19 +63,8 @@ namespace PokemonVisualization
             catch (Exception e)
             {
 
-                services.errors.Add(new Error(e.Message, e.Source));
+                services.Errors.Add(new Error(e.Message, e.Source));
             }
-        }
-
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void GetResults_Click(object sender, EventArgs e)
@@ -89,15 +81,15 @@ namespace PokemonVisualization
             catch (Exception ex)
             {
 
-                services.errors.Add(new Error(ex.Message, ex.Source));
+                services.Errors.Add(new Error(ex.Message, ex.Source));
             }
         }
 
         void ClearChartOne()
         {
-            chart1.Series.Clear();
-            chart1.ChartAreas.Clear();
-            chart1.Titles.Clear();
+            StatsChart.Series.Clear();
+            StatsChart.ChartAreas.Clear();
+            StatsChart.Titles.Clear();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -107,8 +99,6 @@ namespace PokemonVisualization
 
             panel1.BackColor = ColorTranslator.FromHtml(GetHexCode(currentResults[listBox1.SelectedIndex].Type_1));
             textBox1.BackColor = ColorTranslator.FromHtml(GetHexCode(currentResults[listBox1.SelectedIndex].Type_2) ?? GetHexCode(currentResults[listBox1.SelectedIndex].Type_1));
-
-
         }
 
         private void HandleText()
@@ -119,18 +109,16 @@ namespace PokemonVisualization
             label10.Text = currentResults[listBox1.SelectedIndex].Type_2;
             label11.Text = currentResults[listBox1.SelectedIndex].BaseStatTotal.ToString();
             label12.Text = currentResults[listBox1.SelectedIndex].Region_Name;
-
         }
 
         private void HandleChartOne()
         {
             ClearChartOne();
 
-            chart1.Titles.Add("Base Stat Totals");
-            chart1.BackColor = Color.Transparent;
+            StatsChart.Titles.Add("Base Stat Totals");
+            StatsChart.BackColor = Color.Transparent;
 
-
-            var Area1 = chart1.ChartAreas.Add("Area1");
+            var Area1 = StatsChart.ChartAreas.Add("Area1");
             Area1.AxisX.Title = "Stat";
             Area1.AxisY.Title = "Value";
             Area1.AxisX.TitleAlignment = StringAlignment.Center;
@@ -138,7 +126,7 @@ namespace PokemonVisualization
 
             Area1.AxisX.Interval = 1;
 
-            var chartSeries = chart1.Series.Add("Series1");
+            var chartSeries = StatsChart.Series.Add("Series1");
             chartSeries.ChartType = SeriesChartType.Column;
             chartSeries.IsValueShownAsLabel = true;
             chartSeries.LabelBackColor = ColorTranslator.FromHtml(GetHexCode(currentResults[listBox1.SelectedIndex].Type_1));
@@ -157,9 +145,7 @@ namespace PokemonVisualization
         
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-           
             comboBox1.Enabled = checkBox1.Checked;
-            
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -190,18 +176,17 @@ namespace PokemonVisualization
                 {
                     HandleTypeChart();
                     HandleGenChart();
-
                 }
                 catch (Exception ex)
                 {
 
-                    services.errors.Add(new Error(ex.Message, ex.Source));
+                    services.Errors.Add(new Error(ex.Message, ex.Source));
                 }
             }
 
         }
 
-        void HandleTypeChart()
+        private void HandleTypeChart()
         {
             chart2.Series.Clear();
             chart2.ChartAreas.Clear();
@@ -231,7 +216,7 @@ namespace PokemonVisualization
             }
         }
 
-        void HandleGenChart()
+        private void HandleGenChart()
         {
             chart3.Series.Clear();
             chart3.ChartAreas.Clear();

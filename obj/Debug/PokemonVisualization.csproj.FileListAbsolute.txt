@@ -23,10 +23,10 @@ C:\Users\dfmcd\Documents\GitHub\PokemonVisualization\bin\Debug\System.Threading.
 C:\Users\dfmcd\Documents\GitHub\PokemonVisualization\bin\Debug\System.ValueTuple.xml
 C:\Users\dfmcd\Documents\GitHub\PokemonVisualization\obj\Debug\PokemonVisualization.csproj.AssemblyReference.cache
 C:\Users\dfmcd\Documents\GitHub\PokemonVisualization\obj\Debug\PokemonVisualization.csproj.SuggestedBindingRedirects.cache
-C:\Users\dfmcd\Documents\GitHub\PokemonVisualization\obj\Debug\PokemonVisualization.Form1.resources
 C:\Users\dfmcd\Documents\GitHub\PokemonVisualization\obj\Debug\PokemonVisualization.Properties.Resources.resources
 C:\Users\dfmcd\Documents\GitHub\PokemonVisualization\obj\Debug\PokemonVisualization.csproj.GenerateResource.cache
 C:\Users\dfmcd\Documents\GitHub\PokemonVisualization\obj\Debug\PokemonVisualization.csproj.CoreCompileInputs.cache
 C:\Users\dfmcd\Documents\GitHub\PokemonVisualization\obj\Debug\PokemonVisualization.csproj.CopyComplete
 C:\Users\dfmcd\Documents\GitHub\PokemonVisualization\obj\Debug\PokemonVisualization.exe
 C:\Users\dfmcd\Documents\GitHub\PokemonVisualization\obj\Debug\PokemonVisualization.pdb
+C:\Users\dfmcd\Documents\GitHub\PokemonVisualization\obj\Debug\PokemonVisualization.PokemonVis.resources

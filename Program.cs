@@ -16,7 +16,15 @@ namespace PokemonVisualization
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            PokemonVis pokemonVis = new PokemonVis();
+            Application.Run(pokemonVis);
+
+            pokemonVis.services.GenerateLogFile();
+            pokemonVis.services.ReportErrors();
+            pokemonVis.services.ReportFinalErrors();
+
+            pokemonVis.Dispose();
         }
     }
 }

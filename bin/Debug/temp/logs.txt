@@ -1,0 +1,50 @@
+Processed at: 12/12/2022 10:54:11 AM
+
+Request: GetTypes
+Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-types', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+Code: OK
+Time: 12/12/2022 10:53:30 AM
+
+Request: GetGenerations
+Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-regions', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+Code: OK
+Time: 12/12/2022 10:53:30 AM
+
+Request: GetFilteredPokemon
+Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/null/0', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+Code: OK
+Time: 12/12/2022 10:53:32 AM
+
+Request: get-type-chart
+Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-type-chart', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+Code: OK
+Time: 12/12/2022 10:53:40 AM
+
+Request: get-generation-chart
+Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-generation-chart', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+Code: OK
+Time: 12/12/2022 10:53:40 AM
+
+Request: GetFilteredPokemon
+Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/null/4', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+Code: OK
+Time: 12/12/2022 10:54:01 AM
+
