@@ -20,7 +20,6 @@ namespace PokemonVisualization
 
         /// <summary>
         /// Get a chart specified by stored proc passed as parameter, model is always datamodel
-        /// Open reader - execute stored proc - map values to model - return list of model
         /// </summary>
         /// <param name="requestName"></param>
         /// <returns></returns>
@@ -52,7 +51,6 @@ namespace PokemonVisualization
 
         /// <summary>
         /// Get Pokemon filtered by type and gen number, pass "null" and 0 for null values to return results filtered by both, either, or none
-        /// Open reader - execute stored proc - map values to model - return list of model
         /// </summary>
         /// <param name="Type"></param>
         /// <param name="GenNum"></param>
