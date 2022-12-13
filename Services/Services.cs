@@ -51,7 +51,7 @@ namespace PokemonVisualization
         }
 
         /// <summary>
-        /// Get Pokemon filtered by type and gen number, pass empty string and 0 for null values to return results filtered by both, either, or none
+        /// Get Pokemon filtered by type and gen number, pass "null" and 0 for null values to return results filtered by both, either, or none
         /// Open reader - execute stored proc - map values to model - return list of model
         /// </summary>
         /// <param name="Type"></param>
