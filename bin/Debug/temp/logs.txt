@@ -1,4 +1,4 @@
-Processed at: 12/12/2022 8:45:06 PM
+Processed at: 2/18/2023 1:31:34 PM
 
 Request: GetTypes
 Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-types', Version: 1.1, Content: <null>, Headers:
@@ -6,7 +6,7 @@ Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-types', Ver
   Accept: application/json
 }
 Code: OK
-Time: 12/12/2022 8:13:32 PM
+Time: 2/18/2023 1:27:44 PM
 
 Request: GetGenerations
 Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-regions', Version: 1.1, Content: <null>, Headers:
@@ -14,7 +14,7 @@ Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-regions', V
   Accept: application/json
 }
 Code: OK
-Time: 12/12/2022 8:13:32 PM
+Time: 2/18/2023 1:27:44 PM
 
 Request: GetFilteredPokemon
 Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/null/0', Version: 1.1, Content: <null>, Headers:
@@ -22,7 +22,15 @@ Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/nu
   Accept: application/json
 }
 Code: OK
-Time: 12/12/2022 8:15:58 PM
+Time: 2/18/2023 1:27:49 PM
+
+Request: GetFilteredPokemon
+Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/Rock/4', Version: 1.1, Content: <null>, Headers:
+{
+  Accept: application/json
+}
+Code: OK
+Time: 2/18/2023 1:28:42 PM
 
 Request: get-type-chart
 Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-type-chart', Version: 1.1, Content: <null>, Headers:
@@ -30,7 +38,7 @@ Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-type-chart'
   Accept: application/json
 }
 Code: OK
-Time: 12/12/2022 8:16:25 PM
+Time: 2/18/2023 1:29:01 PM
 
 Request: get-generation-chart
 Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-generation-chart', Version: 1.1, Content: <null>, Headers:
@@ -38,69 +46,21 @@ Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-generation-
   Accept: application/json
 }
 Code: OK
-Time: 12/12/2022 8:16:25 PM
+Time: 2/18/2023 1:29:01 PM
 
 Request: GetFilteredPokemon
-Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/Grass/5', Version: 1.1, Content: <null>, Headers:
+Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/Rock/6', Version: 1.1, Content: <null>, Headers:
 {
   Accept: application/json
 }
 Code: OK
-Time: 12/12/2022 8:16:37 PM
+Time: 2/18/2023 1:29:28 PM
 
 Request: GetFilteredPokemon
-Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/null/0', Version: 1.1, Content: <null>, Headers:
+Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/Ghost/6', Version: 1.1, Content: <null>, Headers:
 {
   Accept: application/json
 }
 Code: OK
-Time: 12/12/2022 8:19:02 PM
-
-Request: GetFilteredPokemon
-Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/Grass/5', Version: 1.1, Content: <null>, Headers:
-{
-  Accept: application/json
-}
-Code: OK
-Time: 12/12/2022 8:37:53 PM
-
-Request: GetFilteredPokemon
-Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/Grass/6', Version: 1.1, Content: <null>, Headers:
-{
-  Accept: application/json
-}
-Code: OK
-Time: 12/12/2022 8:37:57 PM
-
-Request: GetFilteredPokemon
-Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/Grass/2', Version: 1.1, Content: <null>, Headers:
-{
-  Accept: application/json
-}
-Code: OK
-Time: 12/12/2022 8:37:59 PM
-
-Request: GetFilteredPokemon
-Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/Dragon/2', Version: 1.1, Content: <null>, Headers:
-{
-  Accept: application/json
-}
-Code: OK
-Time: 12/12/2022 8:38:57 PM
-
-Request: GetFilteredPokemon
-Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/Dragon/3', Version: 1.1, Content: <null>, Headers:
-{
-  Accept: application/json
-}
-Code: OK
-Time: 12/12/2022 8:39:09 PM
-
-Request: GetFilteredPokemon
-Status: Method: GET, RequestUri: 'https://localhost:7047/Pokemon/get-filtered/null/3', Version: 1.1, Content: <null>, Headers:
-{
-  Accept: application/json
-}
-Code: OK
-Time: 12/12/2022 8:39:36 PM
+Time: 2/18/2023 1:29:35 PM
 
